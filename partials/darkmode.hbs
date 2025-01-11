@@ -1,0 +1,44 @@
+<div>
+  <input type="checkbox" class="dm-checkbox" id="dm-checkbox">
+  <label for="dm-checkbox" class="dm-checkbox-label">
+    <span id="sun-icon">{{> "icons/sun"}}</span>
+    <span id="moon-icon">{{> "icons/moon"}}</span>
+  </label>
+  <script>
+  const checkbox = document.getElementById("dm-checkbox");
+
+  checkbox.addEventListener("change", () => {
+    document.body.classList.toggle("dark");
+    const expiryDate = new Date();
+    expiryDate.setTime(expiryDate.getTime() + (30 * 60 * 1000));
+    document.cookie = `darkmode-prefered=${checkbox.checked};path=/;expires=${expiryDate.toUTCString()}`;
+  });
+
+  function getCookie(name) {
+      let ca = document.cookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+          let c = ca[i].trim();
+          if (c.indexOf(name) == 0) {
+              return c.substring(name.length + 1, c.length);
+          }
+      }
+      return "none";
+  }
+
+  function checkCookie() {
+      let preference = getCookie("darkmode-prefered");
+      if (preference === "true") {
+          checkbox.checked = true;
+          document.body.classList.add("dark");
+      } else if (preference === "false") {
+          checkbox.checked = false;
+          document.body.classList.remove("dark");
+      } else if (window.matchMedia("(prefers-color-scheme:dark)").matches) {
+          checkbox.checked = true;
+          document.body.classList.add("dark");
+      }
+  }
+
+  checkCookie();
+  </script>
+</div>
