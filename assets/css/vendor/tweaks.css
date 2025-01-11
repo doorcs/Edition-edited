@@ -1,0 +1,8 @@
+/* 이미지, 코드, 마크다운 블럭 라운딩 처리 */
+img, .feed-image, .u-placeholder {
+  border-radius: .25em
+}
+
+pre {
+  border-radius: .25em
+}
