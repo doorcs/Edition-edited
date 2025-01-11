@@ -1,0 +1,32 @@
+/* 다크모드 토글 버튼 */
+.dm-checkbox {
+  display: none;
+}
+
+.dm-checkbox-label {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+#sun-icon,
+#moon-icon {
+  width: 20px;
+  height: 20px;
+}
+
+#moon-icon {
+  display: none;
+}
+
+.dm-checkbox:checked ~ .dm-checkbox-label #sun-icon {
+  display: none;
+}
+
+.dm-checkbox:checked ~ .dm-checkbox-label #moon-icon {
+  display: block;
+}
