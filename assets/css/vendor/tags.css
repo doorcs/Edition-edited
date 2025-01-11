@@ -1,0 +1,43 @@
+/* tags 페이지 스타일 */
+.post-full-header {
+  text-align: center;
+  padding: 6rem 0 4rem;
+}
+
+.post-full-title {
+  font-size: 4rem;
+  margin: 0;
+  color: var(--color-darker-gray);
+  font-weight: 800;
+}
+
+.tags-container {
+  max-width: 1040px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.tag-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: var(--color-lighter-gray);
+  border-radius: 5px;
+  color: var(--ghost-accent-color);
+  font-size: 2rem;
+  transition: all 0.2s ease;
+}
+
+.tag-link:hover {
+  transform: translateY(-4px);
+}
+
+.tag-count {
+  font-size: 1.6rem;
+  color: var(--color-secondary-text);
+  font-weight: 500;
+}
