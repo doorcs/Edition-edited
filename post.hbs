@@ -1,17 +1,52 @@
 {{!< default}}
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function updatePrismTheme() {
+                const existingThemes = document.querySelectorAll('link[href*="prism-"]');
+                existingThemes.forEach(theme => theme.remove());
 
-<main class="site-main">
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = document.body.classList.contains('dark')
+                    ? 'https://cdn.jsdelivr.net/npm/prismjs/themes/prism-okaidia.min.css'
+                    : 'https://cdn.jsdelivr.net/npm/prismjs/themes/prism.min.css';
+                document.head.appendChild(link);
 
-    {{#post}}
+                const style = document.createElement('style');
+                style.textContent = `.token.operator {
+                    background: none !important;
+                }`;
+                document.head.appendChild(style);
+
+                if (window.Prism) {
+                    Prism.highlightAll();
+                }
+            }
+
+            updatePrismTheme();
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.attributeName === 'class') {
+                        updatePrismTheme();
+                    }
+                });
+            });
+            observer.observe(document.body, {
+                attributes: true
+            });
+        });
+    </script>
+
+    <main class="site-main">
+
+        {{#post}}
         {{> "content" width="wide"}}
-    {{/post}}
+        {{/post}}
 
-    {{#if @custom.show_related_posts}}
+        {{#if @custom.show_related_posts}}
         {{> "related-posts"}}
-    {{/if}}
+        {{/if}}
 
-    {{#post}}
-        {{> "comments"}}
-    {{/post}}
-
-</main>
+    </main>
