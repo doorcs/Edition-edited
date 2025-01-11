@@ -7,13 +7,11 @@
     <title>{{meta_title}}</title>
 
     <link rel="stylesheet" href="{{asset "built/screen.css"}}">
-
     {{ghost_head}}
 </head>
 
-<body class="{{body_class}}{{{block "body_class"}}} is-head-{{#match @custom.navigation_layout "Logo on the left"}}left-logo{{else match @custom.navigation_layout "Logo in the middle"}}middle-logo{{else}}stacked{{/match}}{{#match @custom.title_font "=" "Elegant serif"}} has-serif-title{{/match}}{{#match @custom.body_font "=" "Elegant serif"}} has-serif-body{{/match}}{{^is "home"}}{{#if @site.cover_image}} is-head-brand{{/if}}{{/is}}">
+<body class="{{body_class}}{{{block "body_class"}}} is-head-left-logo{{#match @custom.title_font "=" "Elegant serif"}} has-serif-title{{/match}}{{#match @custom.body_font "=" "Elegant serif"}} has-serif-body{{/match}}{{^is "home"}}{{#if @site.cover_image}} is-head-brand{{/if}}{{/is}}">
 <div class="site">
-
     <header id="gh-head" class="gh-head gh-outer">
         <div class="gh-head-inner">
             <div class="gh-head-brand">
@@ -26,7 +24,6 @@
                         {{/if}}
                     </a>
                 </div>
-                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search>{{> "icons/search"}}</button>
                 <button class="gh-burger"></button>
             </div>
 
@@ -35,6 +32,7 @@
             </nav>
 
             <div class="gh-head-actions">
+                {{> "darkmode"}}
             </div>
         </div>
     </header>
@@ -53,7 +51,7 @@
     <footer class="gh-foot{{#unless @site.secondary_navigation}} no-menu{{/unless}} gh-outer">
         <div class="gh-foot-inner gh-inner">
             <div class="gh-copyright">
-                {{@site.title}} © {{date format="YYYY"}}
+                <a href="{{@site.url}}">{{@site.title}}</a> © {{date format="YYYY"}}
             </div>
             {{#if @site.secondary_navigation}}
                 <nav class="gh-foot-menu">
@@ -61,7 +59,7 @@
                 </nav>
             {{/if}}
             <div class="gh-powered-by">
-                <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
+                Published with <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
             </div>
         </div>
     </footer>
