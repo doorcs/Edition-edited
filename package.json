@@ -83,12 +83,12 @@
             },
             "featured_title": {
                 "type": "text",
-                "default": "Featured articles",
+                "default": "대표글",
                 "group": "homepage"
             },
             "feed_title": {
                 "type": "text",
-                "default": "Latest",
+                "default": "전체글",
                 "group": "homepage"
             },
             "feed_layout": {

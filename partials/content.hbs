@@ -6,11 +6,11 @@
             <div class="single-meta">
                 <span class="single-meta-item single-meta-date">
                     <time datetime="{{date format="YYYY-MM-DD"}}">
-                        {{date published_at format="DD MMM YYYY"}}
+                        {{date published_at format="YYYY년 M월 D일"}}
                     </time>
                 </span>
                 <span class="single-meta-item single-meta-length">
-                    {{reading_time}}
+                    {{reading_time minute="1분 미만" minutes="약 %분"}}
                 </span>
                 {{#primary_tag}}
                     <span class="single-meta-item single-meta-tag">
