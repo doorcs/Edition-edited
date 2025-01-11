@@ -1,10 +1,8 @@
 {{!< default}}
 
 <main class="site-main">
-
     {{#tag}}
     <section class="taxonomy">
-
         {{#if feature_image}}
             <div class="taxonomy-media u-placeholder square">
                 <img class="u-object-fit" src="{{img_url feature_image size="s"}}" alt="{{name}}">
@@ -17,16 +15,14 @@
                 <div class="single-excerpt">{{description}}</div>
             {{/if}}
         </header>
-
     </section>
     {{/tag}}
 
-    <div class="post-feed gh-feed gh-canvas">
+    <div class="post-feed expanded gh-feed gh-canvas">
         {{#foreach posts}}
             {{> "loop"}}
         {{/foreach}}
     </div>
 
     {{pagination}}
-
 </main>
