@@ -43,7 +43,7 @@ function cover() {
 
     document.querySelector('.cover-arrow').addEventListener('click', function () {
         var element = cover.nextElementSibling;
-        element.scrollIntoView({behavior: 'smooth', block: 'start'});
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 }
 
@@ -74,3 +74,12 @@ function featured() {
         },
     });
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    var links = document.querySelectorAll('a');
+    links.forEach(function (link) {
+        if (link.hostname != window.location.hostname) {
+            link.target = '_blank';
+        }
+    });
+});
