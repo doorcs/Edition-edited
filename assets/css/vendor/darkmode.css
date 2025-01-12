@@ -14,9 +14,19 @@ body.dark {
   --darker-gray-color: #f6f6f6;
   --color-black: #fff;
   --black-color: #fff;
+
+  --ghost-accent-color:#ff7e19;
+  --brand-color: #ff7e19;
 }
 
 body.dark img {
   opacity: 0.8
 }
 
+body.dark pre {
+  background-color: var(--color-lighter-gray)
+}
+
+body.dark :not(pre) > code {
+  background-color: var(--color-lighter-gray)
+}
