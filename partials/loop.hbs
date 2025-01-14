@@ -40,7 +40,7 @@
             </div>
             {{#if reading_time}}
                 <div class="feed-length">
-                    {{reading_time}}
+                    {{reading_time minute="1분 미만" minutes="약 %분"}}
                 </div>
             {{/if}}
             {{#if @site.comments_enabled}}
