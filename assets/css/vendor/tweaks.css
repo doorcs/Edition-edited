@@ -4,11 +4,13 @@ img, .feed-image, .u-placeholder {
 }
 
 pre {
-  background-color: var(--color-light-gray);
+  background-color: #87837826;
   border-radius: .25em;
 }
 
 :not(pre) > code {
-  background-color: var(--color-light-gray);
+  color: #EB5757;
+  background-color: #87837826;
   border-radius: .25em;
 }
+

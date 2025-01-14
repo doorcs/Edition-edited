@@ -24,9 +24,9 @@ body.dark img {
 }
 
 body.dark pre {
-  background-color: var(--color-lighter-gray)
+  background-color: #292827
 }
 
 body.dark :not(pre) > code {
-  background-color: var(--color-lighter-gray)
+  background-color: #292827
 }
