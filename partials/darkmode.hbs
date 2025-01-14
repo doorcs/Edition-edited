@@ -9,7 +9,7 @@
 
   toggle.addEventListener("change", () => {
     document.body.classList.toggle("dark");
-    document.cookie = `darkmode-prefered=${toggle.checked};path=/;max-age=1800`;
+    document.cookie = `path=/;max-age=1800;darkmode-preferred=${toggle.checked};`;
   });
 
   function getCookie(name) {
@@ -24,7 +24,7 @@
   }
 
   function checkCookie() {
-      let preference = getCookie("darkmode-prefered");
+      let preference = getCookie("darkmode-preferred");
       if (preference === "true") {
           toggle.checked = true;
           document.body.classList.add("dark");
