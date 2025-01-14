@@ -1,9 +1,9 @@
 /* 다크모드 토글 버튼 */
-.dm-checkbox {
+.dm-toggle {
   display: none;
 }
 
-.dm-checkbox-label {
+.dm-toggle-label {
   width: 40px;
   height: 40px;
   cursor: pointer;
@@ -23,10 +23,10 @@
   display: none;
 }
 
-.dm-checkbox:checked ~ .dm-checkbox-label #sun-icon {
+.dm-toggle:checked ~ .dm-toggle-label #sun-icon {
   display: none;
 }
 
-.dm-checkbox:checked ~ .dm-checkbox-label #moon-icon {
+.dm-toggle:checked ~ .dm-toggle-label #moon-icon {
   display: block;
 }
