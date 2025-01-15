@@ -1,42 +1,39 @@
 <div>
-  <input type="checkbox" class="dm-toggle" id="dm-toggle">
-  <label for="dm-toggle" class="dm-toggle-label">
-    <span id="sun-icon">{{> "icons/sun"}}</span>
-    <span id="moon-icon">{{> "icons/moon"}}</span>
-  </label>
-  <script>
-  const toggle = document.getElementById("dm-toggle");
+    <input type="checkbox" class="dm-toggle" id="dm-toggle">
+    <label for="dm-toggle" class="dm-toggle-label">
+        <span id="sun-icon">{{> "icons/sun"}}</span>
+        <span id="moon-icon">{{> "icons/moon"}}</span>
+    </label>
+    <script>
+        const toggle = document.getElementById("dm-toggle");
+        checkToggle(); // hoisting 활용
 
-  toggle.addEventListener("change", () => {
-    document.body.classList.toggle("dark");
-    document.cookie = `path=/;max-age=1800;darkmode-preferred=${toggle.checked};`;
-  });
+        toggle.addEventListener("change", () => {
+            document.body.classList.toggle("dark");
+            document.cookie = `darkmode-preferred=${toggle.checked};path=/;max-age=1800;`;
+        });
 
-  function getCookie(name) {
-      let ca = document.cookie.split(';');
-      for (let i = 0; i < ca.length; i++) {
-          let c = ca[i].trim();
-          if (c.indexOf(name) == 0) {
-              return c.substring(name.length + 1, c.length);
-          }
-      }
-      return "none";
-  }
+        function checkToggle() {
+            let ca = document.cookie.split(';');
+            let preference = "none";
 
-  function checkCookie() {
-      let preference = getCookie("darkmode-preferred");
-      if (preference === "true") {
-          toggle.checked = true;
-          document.body.classList.add("dark");
-      } else if (preference === "false") {
-          toggle.checked = false;
-          document.body.classList.remove("dark");
-      } else if (window.matchMedia("(prefers-color-scheme:dark)").matches) {
-          toggle.checked = true;
-          document.body.classList.add("dark");
-      }
-  }
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i].trim();
+                if (c.indexOf("darkmode-preferred=") === 0) {
+                    preference = c.substring("darkmode-preferred=".length, c.length);
+                    break;
+                }
+            }
 
-  checkCookie();
-  </script>
+            if (preference === "true") {
+                toggle.checked = true;
+            } else if (preference === "false") {
+                toggle.checked = false;
+            } else if (window.matchMedia("(prefers-color-scheme:dark)").matches) {
+                toggle.checked = true;
+            } else {
+                toggle.checked = false;
+            }
+        }
+    </script>
 </div>
