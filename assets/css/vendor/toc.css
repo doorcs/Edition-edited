@@ -1,0 +1,56 @@
+/* 목차, table of contents */
+
+.gh-sidebar {
+    display: none;
+} /* 1300px 아래에서는 TOC 표시 X */
+
+.gh-content {
+    position: relative;
+}
+
+.gh-toc>.toc-list {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.toc-list {
+    overflow: hidden;
+    list-style: none;
+    line-height: 1.2em;
+    font-size: 1.4rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+a.toc-link {
+    text-decoration: none;
+}
+
+.gh-toc .is-active-link {
+    font-weight: 600;
+    color: var(--color-black);
+}
+
+.gh-toc .is-active-link::before {
+    background-color: var(--ghost-accent-color);
+}
+
+@media (min-width: 1300px) {
+    .gh-sidebar {
+        display : block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: 5vmin 0 0 38px;
+        grid-column: wide-end / main-end;
+        width: 260px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .gh-toc-container {
+        overflow: hidden;
+        position: sticky;
+        top: 5vmin;
+    }
+}

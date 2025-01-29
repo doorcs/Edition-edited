@@ -7,6 +7,7 @@
     <title>{{meta_title}}</title>
 
     <link rel="stylesheet" href="{{asset "built/screen.css"}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.32.2/dist/tocbot.min.css">
     {{ghost_head}}
 </head>
 
@@ -63,7 +64,6 @@
             </div>
         </div>
     </footer>
-
 </div>
 
 {{#is "post, page"}}
@@ -78,6 +78,41 @@
 </script>
 
 <script src="{{asset "built/main.min.js"}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.32.2/dist/tocbot.min.js"></script>
+<script>
+    const parent = document.querySelector(".gh-content.gh-canvas");
+    const asideElement = document.createElement("aside");
+    asideElement.setAttribute("class", "gh-sidebar");
+
+    const containerElement = document.createElement("div");
+    containerElement.setAttribute("class", "gh-toc-container");
+
+    const divElement = document.createElement("div");
+    divElement.setAttribute("class", "gh-toc");
+    containerElement.appendChild(divElement);
+
+    asideElement.appendChild(containerElement);
+    parent.insertBefore(asideElement, parent.firstChild);
+
+    tocbot.init({
+        tocSelector: '.gh-toc',
+        contentSelector: '.gh-content',
+        headingSelector: 'h1, h2, h3, h4',
+        ignoreSelector: 'h4.kg-toggle-heading-text',
+        hasInnerContainers: true,
+        orderedList: false,
+        collapseDepth: 6,
+        enableUrlHashUpdateOnScroll: true,
+    });
+
+    const toc = document.querySelector(".gh-toc");
+    const sidebar = document.querySelector(".gh-sidebar");
+    const tocItems = toc.querySelectorAll('li').length;
+
+    if (tocItems < 2) {
+        sidebar.style.display = 'none';
+    }
+</script>
 
 {{ghost_foot}}
 
