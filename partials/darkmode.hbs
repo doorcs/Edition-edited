@@ -10,7 +10,7 @@
 
         toggle.addEventListener("change", () => {
             document.body.classList.toggle("dark");
-            document.cookie = `darkmode-preferred=${toggle.checked};path=/;max-age=1800;`;
+            document.cookie = `darkmode-preferred=${toggle.checked};path=/;max-age=7200;`;
         });
 
         function checkToggle() {
