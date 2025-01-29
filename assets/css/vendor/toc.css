@@ -1,5 +1,4 @@
 /* 목차, table of contents */
-
 .gh-sidebar {
     display: none;
 } /* 1300px 아래에서는 TOC 표시 X */
@@ -10,20 +9,22 @@
 
 .gh-toc>.toc-list {
     position: relative;
-    padding-left: 2rem;
+    padding-left: 1.8rem;
 }
 
 .toc-list {
-    overflow: hidden;
     list-style: none;
-    line-height: 1.2em;
+    line-height: 1.1em;
     font-size: 1.4rem;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 a.toc-link {
     text-decoration: none;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
 }
 
 .gh-toc .is-active-link {
@@ -37,13 +38,13 @@ a.toc-link {
 
 @media (min-width: 1300px) {
     .gh-sidebar {
-        display : block;
+        display: block;
         position: absolute;
         top: 0;
         bottom: 0;
-        margin: 5vmin 0 0 38px;
+        margin: 5vmin 0 0 34px;
         grid-column: wide-end / main-end;
-        width: 260px;
+        width: 256px;
         text-overflow: ellipsis;
         white-space: nowrap;
     }
