@@ -9,16 +9,17 @@
 
 .gh-toc>.toc-list {
     position: relative;
-    padding-left: 1.8rem;
+    padding-left: 1.4rem;
 }
 
 .toc-list {
     list-style: none;
-    line-height: 1.1em;
-    font-size: 1.4rem;
+    line-height: 1em;
+    font-size: 1.2rem;
 }
 
 a.toc-link {
+    color: currentColor;
     text-decoration: none;
     display: block;
     overflow: hidden;
@@ -28,12 +29,18 @@ a.toc-link {
 }
 
 .gh-toc .is-active-link {
-    font-weight: 600;
     color: var(--color-black);
+    font-weight: 600;
+}
+
+.toc-link::before {
+    background-color: var(--color-mid-gray);
 }
 
 .gh-toc .is-active-link::before {
+    line-height: 0.7em;
     background-color: var(--ghost-accent-color);
+    margin-top: -6px;
 }
 
 @media (min-width: 1300px) {
@@ -42,7 +49,7 @@ a.toc-link {
         position: absolute;
         top: 0;
         bottom: 0;
-        margin: 5vmin 0 0 34px;
+        margin: 4vmin 0 0 34px;
         grid-column: wide-end / main-end;
         width: 256px;
         text-overflow: ellipsis;
@@ -52,6 +59,6 @@ a.toc-link {
     .gh-toc-container {
         overflow: hidden;
         position: sticky;
-        top: 5vmin;
+        top: 4vmin;
     }
 }
