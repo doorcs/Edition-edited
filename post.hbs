@@ -1,52 +1,42 @@
 {{!< default}}
-    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            function updatePrismTheme() {
-                const existingThemes = document.querySelectorAll('link[href*="prism-"]');
-                existingThemes.forEach(theme => theme.remove());
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      function u() {
+        e = document.querySelectorAll('link[href*="prism-"]');
+        e.forEach(t => t.remove());
 
-                const link = document.createElement('link');
-                link.rel = 'stylesheet';
-                link.href = document.body.classList.contains('dark')
-                    ? 'https://cdn.jsdelivr.net/npm/prismjs/themes/prism-okaidia.min.css'
-                    : 'https://cdn.jsdelivr.net/npm/prismjs/themes/prism.min.css';
-                document.head.appendChild(link);
+        l = document.createElement('link');
+        l.rel = 'stylesheet';
+        l.href = document.documentElement.classList.contains('dark')
+          ? 'https://cdn.jsdelivr.net/npm/prismjs/themes/prism-okaidia.min.css'
+          : 'https://cdn.jsdelivr.net/npm/prismjs/themes/prism.min.css';
+        document.head.appendChild(l);
 
-                const style = document.createElement('style');
-                style.textContent = `.token.operator {
-                    background: none !important;
-                }`;
-                document.head.appendChild(style);
+        s = document.createElement('style');
+        s.textContent = `.token.operator {background: none !important;}`;
+        document.head.appendChild(s);
 
-                if (window.Prism) {
-                    Prism.highlightAll();
-                }
-            }
+        if (window.Prism) {
+          Prism.highlightAll();
+        }
+      }
 
-            updatePrismTheme();
-            const observer = new MutationObserver((mutations) => {
-                mutations.forEach((mutation) => {
-                    if (mutation.attributeName === 'class') {
-                        updatePrismTheme();
-                    }
-                });
-            });
-            observer.observe(document.body, {
-                attributes: true
-            });
-        });
-    </script>
+      u();
+      o = new MutationObserver((M) => { M.forEach((m) => { if (m.attributeName === 'class') u(); }); });
+      o.observe(document.documentElement, { attributes: true });
+    });
+  </script>
 
-    <main class="site-main">
+  <main class="site-main">
 
-        {{#post}}
-        {{> "content" width="wide"}}
-        {{/post}}
+    {{#post}}
+    {{> "content" width="wide"}}
+    {{/post}}
 
-        {{#if @custom.show_related_posts}}
-        {{> "related-posts"}}
-        {{/if}}
+    {{#if @custom.show_related_posts}}
+    {{> "related-posts"}}
+    {{/if}}
 
-    </main>
+  </main>
