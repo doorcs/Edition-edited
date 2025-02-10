@@ -1,39 +1,23 @@
 <div>
-    <input type="checkbox" class="dm-toggle" id="dm-toggle">
-    <label for="dm-toggle" class="dm-toggle-label">
-        <span id="sun-icon">{{> "icons/sun"}}</span>
-        <span id="moon-icon">{{> "icons/moon"}}</span>
-    </label>
-    <script>
-        const toggle = document.getElementById("dm-toggle");
-        checkToggle(); // hoisting 활용
+  <input type="checkbox" class="dm-toggle" id="dm-toggle">
+  <label for="dm-toggle" class="dm-toggle-label">
+    <span id="sun-icon">{{> "icons/sun"}}</span>
+    <span id="moon-icon">{{> "icons/moon"}}</span>
+  </label>
+  <script>
+    (function() {
+      let p;
+      const l = document.cookie.split(';');
+      for (const c of l)
+        if (c.trim().indexOf("darkmode-preferred=") === 0) { p = c.substring(19); break; }
 
-        toggle.addEventListener("change", () => {
-            document.body.classList.toggle("dark");
-            document.cookie = `darkmode-preferred=${toggle.checked};path=/;max-age=7200;`;
-        });
+      const t = document.getElementById("dm-toggle");
+      if (p === "true") t.checked = true;
+      else if (p === "false") t.checked = false;
+      else if (window.matchMedia("(prefers-color-scheme:dark)").matches) t.checked = true;
+      else t.checked = false;
 
-        function checkToggle() {
-            let ca = document.cookie.split(';');
-            let preference = "none";
-
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i].trim();
-                if (c.indexOf("darkmode-preferred=") === 0) {
-                    preference = c.substring("darkmode-preferred=".length, c.length);
-                    break;
-                }
-            }
-
-            if (preference === "true") {
-                toggle.checked = true;
-            } else if (preference === "false") {
-                toggle.checked = false;
-            } else if (window.matchMedia("(prefers-color-scheme:dark)").matches) {
-                toggle.checked = true;
-            } else {
-                toggle.checked = false;
-            }
-        }
-    </script>
+      t.addEventListener("change", () => { document.documentElement.classList.toggle('dark'); document.cookie = `darkmode-preferred=${t.checked};path=/;max-age=7200;`; });
+    })();
+  </script>
 </div>

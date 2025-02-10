@@ -1,5 +1,5 @@
 /* 다크모드 */
-body.dark {
+html.dark {
   --color-primary-text: #ccc;
   --color-secondary-text: #999;
   --color-white: #000;
@@ -19,14 +19,14 @@ body.dark {
   --brand-color: #ff7e19;
 }
 
-body.dark img {
+html.dark img {
   opacity: 0.8
 }
 
-body.dark pre {
+html.dark pre {
   background-color: #292827
 }
 
-body.dark :not(pre) > code {
+html.dark :not(pre) > code {
   background-color: #292827
 }
