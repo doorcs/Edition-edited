@@ -2,21 +2,21 @@
 
 <main class="site-main">
 
-    <header class="feed-header gh-canvas">
-        {{#if @custom.feed_title}}
-            <div class="feed-header-wrapper">
-                <h2 class="feed-header-title">{{@custom.feed_title}}</h2>
-            </div>
-        {{/if}}
-    </header>
+  <header class="feed-header gh-canvas">
+    {{#if @custom.feed_title}}
+      <div class="feed-header-wrapper">
+        <h2 class="feed-header-title">{{@custom.feed_title}}</h2>
+      </div>
+    {{/if}}
+  </header>
 
-    <div class="post-feed expanded gh-feed gh-canvas">
-        {{#foreach posts}}
-            {{> "loop"}}
-        {{/foreach}}
-    </div>
+  <div class="post-feed expanded gh-feed gh-canvas">
+    {{#foreach posts}}
+      {{> "loop"}}
+    {{/foreach}}
+  </div>
 
-    {{pagination}}
+  {{pagination}}
 
 </main>
 
