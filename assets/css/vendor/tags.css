@@ -29,11 +29,11 @@
   border-radius: 5px;
   color: var(--ghost-accent-color);
   font-size: 2rem;
-  transition: all 0.2s ease;
 }
 
 .tag-link:hover {
   transform: translateY(-4px);
+  transition: 0.2s ease;
 }
 
 .tag-count {
