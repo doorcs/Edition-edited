@@ -5,18 +5,9 @@
     <span id="moon-icon">{{> "icons/moon"}}</span>
   </label>
   <script>
-    (function() {
-      let p;
-      const l = document.cookie.split(';');
-      for (const c of l)
-        if (c.trim().indexOf("darkmode-preferred=") === 0) { p = c.substring(19); break; }
-
+    (() => {
       const t = document.getElementById("dm-toggle");
-      if (p === "true") t.checked = true;
-      else if (p === "false") t.checked = false;
-      else if (window.matchMedia("(prefers-color-scheme:dark)").matches) t.checked = true;
-      else t.checked = false;
-
+      t.checked = document.documentElement.classList.contains('dark');
       t.addEventListener("change", () => { document.documentElement.classList.toggle('dark'); document.cookie = `darkmode-preferred=${t.checked};path=/;max-age=7200;`; });
     })();
   </script>

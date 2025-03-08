@@ -1,14 +1,7 @@
 <script>
-    (function() {
-      let p;
-      const l = document.cookie.split(';');
-      for (const c of l)
-        if (c.trim().indexOf("darkmode-preferred=") === 0) { p = c.substring(19); break; }
-
-
-      if (p === "true") document.documentElement.classList.add('dark');
-      else if (p === "false") document.documentElement.classList.remove('dark');
-      else if (window.matchMedia("(prefers-color-scheme:dark)").matches) document.documentElement.classList.add('dark');
-      else document.documentElement.classList.remove('dark');
+    (() => {
+      const p = document.cookie.split("; ").find((l) => l.startsWith("darkmode-preferred="))?.split("=")[1];
+      const d = p === "true" || (p !== "false" && window.matchMedia("(prefers-color-scheme:dark)").matches);
+      document.documentElement.classList.toggle('dark', d);
     })();
 </script>
