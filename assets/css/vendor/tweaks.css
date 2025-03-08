@@ -9,8 +9,9 @@ pre {
 }
 
 :not(pre) > code {
-  color: #EB5757;
+  color: #0a0aaf;
   background-color: #87837826;
   border-radius: .25em;
 }
 
+/* accent color: 1978ff */
