@@ -3,7 +3,6 @@ var body = document.body;
 var timeout;
 var st = 0;
 
-checkCookie(); // Javascrip의 호이스팅(Hoisting)을 활용! ( 함수 선언문은 자동으로 상단에 끌어올려지므로, 함수 선언 이전에도 호출 가능 )
 cover();
 featured();
 pagination(false);
@@ -83,27 +82,4 @@ function featured() {
             },
         },
     });
-}
-
-function checkCookie() { // 다크모드 적용 로직
-    let ca = document.cookie.split(';');
-    let preference = "none";
-
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i].trim();
-        if (c.indexOf("darkmode-preferred=") === 0) {
-            preference = c.substring("darkmode-preferred=".length, c.length);
-            break;
-        }
-    }
-
-    if (preference === "true") {
-        body.classList.add("dark");
-    } else if (preference === "false") {
-        body.classList.remove("dark");
-    } else if (window.matchMedia("(prefers-color-scheme:dark)").matches) {
-        body.classList.add("dark");
-    } else {
-        body.classList.remove("dark");
-    }
 }

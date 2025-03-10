@@ -1,73 +1,70 @@
 {{!< default}}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.32.2/dist/tocbot.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/tocbot@4.32.2/dist/tocbot.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      function u() {
-        s = document.createElement('style');
-        s.textContent = `.token.operator {background: none !important;}`;
-        document.head.appendChild(s);
 
-        l = document.createElement('link');
-        l.rel = 'stylesheet';
-        l.href = document.documentElement.classList.contains('dark')
-          ? 'https://cdn.jsdelivr.net/npm/prismjs/themes/prism-okaidia.min.css'
-          : 'https://cdn.jsdelivr.net/npm/prismjs/themes/prism.min.css';
-        document.head.appendChild(l);
+<script>{{> "lib/tocbot/tocbot-js"}}</script>
+<script>{{> "lib/prism/prism-everylang-js"}}</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const e = document.createElement('style');
+    e.textContent = `.token.operator {background: none !important;}`;
+    document.head.appendChild(e);
 
-        Prism.highlightAll();
-      }
-      u();
+    const s = document.createElement('style');
+    document.head.appendChild(s);
 
-      o = new MutationObserver((M) => { M.forEach((m) => { if (m.attributeName === 'class') u(); }); });
-      o.observe(document.documentElement, { attributes: true });
-    });
-  </script>
-
-
-  <main class="site-main">
-
-    {{#post}}
-    {{> "content" width="wide"}}
-    {{/post}}
-
-    {{#if @custom.show_related_posts}}
-    {{> "related-posts"}}
-    {{/if}}
-
-  </main>
-
-  <script>
-    const parent = document.querySelector(".gh-content.gh-canvas");
-    const asideElement = document.createElement("aside");
-    asideElement.setAttribute("class", "gh-sidebar");
-
-    const containerElement = document.createElement("div");
-    containerElement.setAttribute("class", "gh-toc-container");
-
-    const divElement = document.createElement("div");
-    divElement.setAttribute("class", "gh-toc");
-    containerElement.appendChild(divElement);
-
-    asideElement.appendChild(containerElement);
-    parent.insertBefore(asideElement, parent.firstChild);
-
-    tocbot.init({
-      tocSelector: '.gh-toc',
-      contentSelector: '.gh-content',
-      headingSelector: 'h1, h2, h3, h4',
-      ignoreSelector: 'h4.kg-toggle-heading-text',
-      hasInnerContainers: true,
-      orderedList: false,
-      collapseDepth: 6,
-    });
-
-    const toc = document.querySelector(".gh-toc");
-    const sidebar = document.querySelector(".gh-sidebar");
-
-    if (toc.querySelectorAll('li').length < 2) {
-      sidebar.style.display = 'none';
+    function u() {
+      s.textContent = document.documentElement.classList.contains('dark')
+        ? `{{> "lib/prism/okaidia-css"}}`
+        : `{{> "lib/prism/default-css"}}`;
+      Prism.highlightAll();
     }
-  </script>
+    u()
+
+    const o = new MutationObserver((M) => { M.forEach((m) => { if (m.attributeName === 'class') u(); }); });
+    o.observe(document.documentElement, { attributes: true });
+  });
+</script>
+
+<main class="site-main">
+
+  {{#post}}
+  {{> "content" width="wide"}}
+  {{/post}}
+
+  {{#if @custom.show_related_posts}}
+  {{> "related-posts"}}
+  {{/if}}
+
+</main>
+
+<script>
+  const parent = document.querySelector(".gh-content.gh-canvas");
+  const asideElement = document.createElement("aside");
+  asideElement.setAttribute("class", "gh-sidebar");
+
+  const containerElement = document.createElement("div");
+  containerElement.setAttribute("class", "gh-toc-container");
+
+  const divElement = document.createElement("div");
+  divElement.setAttribute("class", "gh-toc");
+  containerElement.appendChild(divElement);
+
+  asideElement.appendChild(containerElement);
+  parent.insertBefore(asideElement, parent.firstChild);
+
+  tocbot.init({
+    tocSelector: '.gh-toc',
+    contentSelector: '.gh-content',
+    headingSelector: 'h1, h2, h3, h4',
+    ignoreSelector: 'h4.kg-toggle-heading-text',
+    hasInnerContainers: true,
+    orderedList: false,
+    collapseDepth: 6,
+  });
+
+  const toc = document.querySelector(".gh-toc");
+  const sidebar = document.querySelector(".gh-sidebar");
+
+  if (toc.querySelectorAll('li').length < 2) {
+    sidebar.style.display = 'none';
+  }
+</script>
